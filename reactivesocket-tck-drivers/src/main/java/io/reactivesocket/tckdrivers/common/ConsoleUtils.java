@@ -70,5 +70,4 @@ public class ConsoleUtils {
     public static boolean allPassed() {
         return allPassed;
     }
-
 }

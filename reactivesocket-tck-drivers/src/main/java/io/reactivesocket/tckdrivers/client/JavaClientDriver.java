@@ -511,7 +511,6 @@ public class JavaClientDriver {
                     ConsoleUtils.success(name);
                 else if (result == TestResult.FAIL)
                     ConsoleUtils.failure(name);
-
             } catch (Exception e) {
                 e.printStackTrace();
                 ConsoleUtils.failure(name);
