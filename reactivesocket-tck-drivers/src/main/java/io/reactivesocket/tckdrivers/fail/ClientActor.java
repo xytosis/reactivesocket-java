@@ -23,7 +23,8 @@ public class ClientActor {
         ts.assertNoErrors();
         ts.assertNoValues();
         TestSubscriber<Payload> ts2 = new TestSubscriber<>(0L);
-        Publisher<Payload> pub2 = r.requestStream(new PayloadImpl("a", "b"));
+        ReactiveSocket r2 = Client.createClient();
+        Publisher<Payload> pub2 = r2.requestStream(new PayloadImpl("a", "b"));
         pub2.subscribe(ts2);
         ts2.request(1);
         ts2.cancel();
