@@ -32,7 +32,7 @@ public class ClientActor {
         ts2.assertNoErrors();
         ts2.assertNoValues();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (Exception e) {
             System.out.println("interrupted");
         }

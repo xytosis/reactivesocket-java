@@ -27,6 +27,8 @@ public class Client {
 
             ClientActor actor = new ClientActor();
             actor.act();
+            actor.act();
+            actor.act();
 
         } catch (Exception e) {
             e.printStackTrace();
