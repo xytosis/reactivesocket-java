@@ -315,6 +315,7 @@ public class TestSubscriber<T> implements Subscriber<T>, Subscription {
         if (!cancelled) {
             cancelled = true;
             subscription.get().cancel();
+            System.out.println("canceled");
         }
     }
 

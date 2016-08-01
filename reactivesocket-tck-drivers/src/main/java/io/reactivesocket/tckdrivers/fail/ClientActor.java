@@ -16,17 +16,24 @@ public class ClientActor {
         ReactiveSocket r = Client.createClient();
         TestSubscriber<Payload> ts = new TestSubscriber<>(0L);
         Publisher<Payload> pub = r.requestStream(new PayloadImpl("a", "b"));
-        ts.cancel();
         pub.subscribe(ts);
-        ts.cancel();
         ts.request(1);
+        ts.cancel();
         ts.assertNoErrors();
         ts.assertNoErrors();
         ts.assertNoValues();
+        TestSubscriber<Payload> ts2 = new TestSubscriber<>(0L);
+        Publisher<Payload> pub2 = r.requestStream(new PayloadImpl("a", "b"));
+        pub2.subscribe(ts2);
+        ts2.request(1);
+        ts2.cancel();
+        ts2.assertNoErrors();
+        ts2.assertNoErrors();
+        ts2.assertNoValues();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (Exception e) {
-
+            System.out.println("interrupted");
         }
     }
 
