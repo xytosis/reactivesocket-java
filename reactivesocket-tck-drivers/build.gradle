@@ -26,10 +26,18 @@ dependencies {
     compile 'io.airlift:airline:0.7'
 }
 
+<<<<<<< 5388a96c0b7b2bdddefb3202528f329a8af936d1
 task runTests(type: JavaExec) {
+=======
+task (runTests, dependsOn: jar, type: JavaExec) {
+>>>>>>> updating to include build in travis
     classpath(sourceSets.main.runtimeClasspath, sourceSets.main.compileClasspath)
     main = 'io.reactivesocket.tckdrivers.main.TestMain'
     args '--port',  '4567', '--serverfile',  'src/test/resources/server$.txt',  '--clientfile',  'src/test/resources/client$.txt'
 }
 
+<<<<<<< 5388a96c0b7b2bdddefb3202528f329a8af936d1
 build.dependsOn runTests
+=======
+build.finalizedBy(runTests)
+>>>>>>> updating to include build in travis
