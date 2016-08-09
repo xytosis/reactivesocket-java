@@ -83,12 +83,20 @@ public class JavaServerDriver {
     }
 
     // should be used if we want the server to be shutdown upon receiving some EOF packet
-    public JavaServerDriver(String path, TcpReactiveSocketServer server) {
+    public JavaServerDriver(String path, TcpReactiveSocketServer server, CountDownLatch waitStart) {
         this(path);
         this.server = server;
+        this.waitStart = waitStart;
+    }
+
+    /**
+     * Starts up the server
+     */
+    public void run() {
         this.startedServer = this.server.start((setupPayload, reactiveSocket) -> {
             return parse();
         });
+        waitStart.countDown(); // notify that this server has started
         startedServer.awaitShutdown();
     }
 
