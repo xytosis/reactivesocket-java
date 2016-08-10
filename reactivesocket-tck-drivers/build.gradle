@@ -26,28 +26,10 @@ dependencies {
     compile 'io.airlift:airline:0.7'
 }
 
-<<<<<<< bb6a0e91b5a9ccb96ee2435df3add8f4ac24ac4b
-<<<<<<< 5388a96c0b7b2bdddefb3202528f329a8af936d1
 task runTests(type: JavaExec) {
-=======
-task (runTests, dependsOn: jar, type: JavaExec) {
->>>>>>> updating to include build in travis
-=======
-task runTests(type: JavaExec) {
->>>>>>> updated with yuri's suggestions, and make it so that we can check whether or not any tests pass or fail globally
     classpath(sourceSets.main.runtimeClasspath, sourceSets.main.compileClasspath)
     main = 'io.reactivesocket.tckdrivers.main.TestMain'
     args '--port',  '4567', '--serverfile',  'src/test/resources/server$.txt',  '--clientfile',  'src/test/resources/client$.txt'
 }
 
-<<<<<<< bb6a0e91b5a9ccb96ee2435df3add8f4ac24ac4b
-<<<<<<< 5388a96c0b7b2bdddefb3202528f329a8af936d1
 build.dependsOn runTests
-=======
-build.finalizedBy(runTests)
->>>>>>> updating to include build in travis
-=======
-tasks.build.doLast() {
-    runTests.execute()
-}
->>>>>>> updated with yuri's suggestions, and make it so that we can check whether or not any tests pass or fail globally
