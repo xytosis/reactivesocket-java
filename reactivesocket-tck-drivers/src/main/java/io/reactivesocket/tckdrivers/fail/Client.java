@@ -26,9 +26,13 @@ public class Client {
 
 
             ClientActor actor = new ClientActor();
+            /*actor.act();
             actor.act();
-            actor.act();
-            actor.act();
+            actor.act();*/
+
+            actor.act2StreamFail();
+            actor.act2StreamFail();
+            actor.act2StreamFail();
 
         } catch (Exception e) {
             e.printStackTrace();

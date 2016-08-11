@@ -38,6 +38,27 @@ public class ClientActor {
         }
     }
 
+    public void act2StreamFail() {
+        System.out.println("got here");
+        ReactiveSocket r = Client.createClient();
+        TestSubscriber<Payload> t1 = new TestSubscriber<>(0L);
+        Publisher<Payload> p1 = r.requestStream(new PayloadImpl("a", "b"));
+        p1.subscribe(t1);
+        TestSubscriber<Payload> t2 = new TestSubscriber<>(0L);
+        Publisher<Payload> p2 = r.requestStream(new PayloadImpl("c", "d"));
+        p2.subscribe(t2);
+        t1.request(1);
+        t2.request(2);
+        t1.request(1);
+        t2.request(1);
+        t1.request(1);
+        try {
+            Thread.sleep(5000);
+        } catch (Exception e) {
+            System.out.println("interrupted");
+        }
+    }
+
     private interface MyRunnable extends Runnable {
         void start();
         void join();

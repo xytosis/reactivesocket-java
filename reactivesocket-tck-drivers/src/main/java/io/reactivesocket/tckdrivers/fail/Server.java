@@ -22,12 +22,6 @@ public class Server {
 
                             })
                             .withRequestStream(payload -> s -> {
-                                try {
-                                    Thread.sleep(3000);
-                                } catch (Exception e) {
-
-                                }
-
                                 s.onSubscribe(new Subscription() {
 
                                     @Override
