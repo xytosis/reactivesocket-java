@@ -278,6 +278,8 @@ public class TestSubscriber<T> implements Subscriber<T>, Subscription {
         Subscription s = subscription.get();
         if (s != null) {
             s.request(n);
+        } else {
+            missedRequested.set(missedRequested.get() + n);
         }
     }
 

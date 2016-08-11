@@ -33,7 +33,7 @@ public class Server {
                                     @Override
                                     public void request(long n) {
 
-                                        s.onNext(new PayloadImpl("a", "b"));
+                                        s.onNext(new PayloadImpl("hey", "there"));
                                     }
 
                                     @Override

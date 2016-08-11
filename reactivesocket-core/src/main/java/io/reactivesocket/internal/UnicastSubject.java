@@ -67,6 +67,7 @@ public final class UnicastSubject<T> implements Subscriber<T>, Publisher<T> {
     @Override
     public void onNext(T t) {
         System.out.println(s);
+        System.out.println(t);
         s.onNext(t);
     }
 
